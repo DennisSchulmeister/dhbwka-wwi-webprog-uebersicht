@@ -1,0 +1,129 @@
+/* ALLGEMEINES */
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+html, body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+html {
+    font-family: "Rubik", sans-serif;
+    font-size: 1vw;
+    line-height: 1.6;
+
+    /* https://www.transparenttextures.com/ */
+    background-color: #156b95;
+    background-image: url("img/connected.png");
+
+    padding: 2rem;
+}
+
+body {
+    position: relative;
+    overflow: hidden;
+}
+
+#container-outer {
+    /** Dieser Container wird beim Scrollen verschoben */
+    position: absolute;
+    transition: top 0.5s, left 0.5s, transform 0.5s;
+    top: 0;
+    left: 0;
+    transform: scale(1);
+}
+
+#container-inner {
+    /* Damit die <section> absolut positioniert werden können */
+    position: relative;
+}
+
+/* INHALTSBEREICH */
+.hidden {
+    display: none;
+}
+
+section {
+    position: absolute;
+    box-sizing: border-box;
+    overflow: auto;
+
+    background-color: white;
+    padding: 1em;
+
+    border: 1px solid #303030;
+    box-shadow: 2px 2px 2px rgba(0,0,0, 0.5);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* https://pixabay.com/de/papier-hintergrund-textur-abstrakt-1990111/ */
+    background-image: url(img/paper-1990111_1280.jpg);
+    background-size: cover;
+    background-position: top left;
+    background-attachment: fixed;
+}
+
+section > * {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100%;
+}
+
+/* OPTISCHE VERSCHÖNERUNGEN */
+h1 {
+    text-shadow: 2px 2px 2px rgba(0,0,0, 0.5);
+    margin: 0 0 0.5em 0;
+    font-size: 230%;
+}
+
+h1, h3, .red {
+    color: rgb(254, 61, 78);
+}
+
+h2 {
+    color: rgb(28, 174, 213);
+    text-shadow: 2px 2px 2px rgba(0,0,0, 0.5);
+    margin: 0 0 0.5em 0;
+    font-size: 200%;
+}
+
+.nopad td {
+    padding: 0 !important;
+}
+
+td {
+    padding-right: 1em;
+    padding-bottom: 1em;
+}
+
+kbd {
+    border: 1px solid grey;
+    background-color: #d0d0d0;
+    border-radius: 0.2em;
+    padding: 0.2em;
+}
+
+.white {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.white1 {
+    background-color: white;
+}
+
+.p1 {
+    padding: 1em;
+}
+
+.rounded {
+    border-radius: 0.5em;
+}
+
+emph {
+    color: red;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0, 0.5);
+}

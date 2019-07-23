@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>🌍 Webprogrammierung: Gesamtüberblick</title>
+
+        <link rel="stylesheet" href="lib/prism.css" />
+        <script src="lib/prism.js"></script>
+
+        <link rel="stylesheet" href="app.css" />
+        <script src="app.js"></script>
+
+        <script>
+            window.addEventListener("load", () => {
+                let ratio = 16/8;
+                let width = 80;
+                let margin = "2rem";
+                let startWith = "intro-titel"
+
+                let app = new App(ratio, width, margin, startWith);
+                app.run();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="container-outer">
+            <div id="container-inner">
+                <!-- ===== -->
+                <!-- Intro -->
+                <!-- ===== -->
+                <section id="intro-titel" data-title="Titelfolie" style="background-image: url(img/atarihq.jpg)">
+                    <h1>Webprogrammierung: Gesamtüberblick</h1>
+
+                    <table class="p1 white rounded">
+                        <tr>
+                            <td>
+                                <kbd>Pfeiltasten</kbd>
+                            </td>
+                            <td>
+                                Navigieren
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <kbd>Leertaste</kbd>
+                            </td>
+                            <td>
+                                Zurück zum Anfang
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <kbd>Enter</kbd>
+                            </td>
+                            <td>
+                                Übersicht
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <kbd>+</kbd> / <kbd>-</kbd>
+                            </td>
+                            <td>
+                                Zoom
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+
+                <!-- ======== -->
+                <!-- Übergang -->
+                <!-- ======== -->
+                <section id="uebergang1" data-right-of="intro-titel" data-title="Webanwendungen sind wie …" style="background-image: url(img/time-1739629_1280.jpg);">
+                    <!-- Bild: https://pixabay.com/de/zeit-uhr-kopf-frau-gesicht-blick-1739629/ -->
+                    <div></div>
+                    <div style="font-size: 170%; text-align: center; color: rgb(15, 75, 108); text-shadow: 1px 1px 1px rgba(0,0,0,0.5); font-weight: bold; font-style: italic;">
+                        Webanwendungen sind wie Uhren. <br />
+                        Es gibt viele verschiedene Arten, die alle zwar ähnlich aber doch anders aussehen. <br />
+                        Sie funktionieren auch unterschiedlich, machen aber doch irgendwie das gleiche.
+                    </div>
+                </section>
+
+                <section id="uebgergang2" data-below="uebergang1" data-title="Nicht den Überblick verlieren" style="background-image: url(img/mountains-1412683_1280.png)">
+                    <!-- Bild: https://pixabay.com/de/gebirge-panorama-wald-berg-natur-1412683/ -->
+                    <h2 class="red">Da sieht man schon gerne mal den Wald vor lauter Bäumen nicht mehr</h2>
+                </section>
+
+                <!-- ==== -->
+                <!-- HTTP -->
+                <!-- ==== -->
+                <section id="http-browser" data-below="uebgergang2" data-title="Der Browser sendet eine Anfrage" style="background-image: url(img/browser.png)">
+                    <div></div>
+
+                    <div class="p1 white1 rounded">
+                        <h2>Es beginnt immer mit einer Anfrage</h2>
+                        <p>
+                            Webanwendungen werden immer durch eine Anfrage des Browsers an den Server gestartet,
+                            da der Browser auf diese Weise die benötigten Dateien (Ressourcen) vom Server abruft.
+                            Je nach Art der Webanwendung wird diese dann auf dem Server oder im Browser ausgeführt.
+                            Ressourcen werden über eine weltweit eindeutige URL adressiert.
+                        </p>
+                        <h3>Aufbau einer URL</h3>
+                        <p>
+                            <code>
+                                protokoll://host:port/pfad?parameter=wert&amp;parameter=wert#anker
+                            </code>
+                        </p>
+                        <h3>Zum Beispiel</h3>
+                        <p>
+                            <code>
+                                https://www.wpvs.de/webprog/4-server/http_jsp_servlets/#4
+                            </code>
+                        </p>
+                    </div>
+                </section>
+
+                <section id="http-anfrage" data-right-of="http-browser" data-title="Inhalt der HTTP-Anfrage">
+                    <h2>Inhalt der HTTP-Anfrage</h2>
+
+                    <div>
+<pre><code class="language-http">GET /webprog/4-server/http_jsp_servlets/ HTTP/1.1
+Host: www.wpvs.de
+User-Agent: Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:62.0) Gecko/20100101 Firefox/62.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: de-DE,en-US;q=0.7,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+</code></pre>
+                        <div>
+                            <h3>GET</h3>
+                            <p>
+                                Inhalte vom Server abrufen (ohne Request Body)
+                            </p>
+
+                            <h3>PUT / POST</h3>
+                            <p>
+                                Inhalte auf den Server hochladen (im Request Body)
+                            </p>
+
+                            <h3>DELETE</h3>
+                            <p>
+                                Daten auf dem Server löschen (ohne Request Body)
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="http-server" data-right-of="http-anfrage" data-title="Abrufbare Ressourcen des Servers">
+                    <h2>Abrufbare Ressourcen des Servers</h2>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                        <div>
+                            <div>
+                                <h3>Statische Ressourcen</h3>
+                                <p>
+                                    Einfache Dateien mit festem Inhalt
+                                </p>
+                                <h3>Dynamische Ressourcen</h3>
+                                <p>
+                                    Zur Laufzeit erzeugte Daten, z.B. aus einer Datenbank
+                                </p>
+                            </div>
+
+                            <img src="img/server-db.png" style="width: 95%;"/>
+                        </div>
+<pre style="background: black; color: white; padding: 0.5em; font-size: 90%;">
+.
+├── src
+│   ├── conf
+│   │   └── persistence.xml
+│   └── java
+│       └── de
+│           └── dhbw
+│               └── comix
+│                   ├── database
+│                   │   ├── Comic.java
+│                   │   ├── DatabaseFacade.java
+│                   │   └── Serie.java
+│                   └── web
+│                       ├── IndexServlet.java
+└── web
+    ├── bg.jpg
+    ├── style.css
+    └── WEB-INF
+        ├── glassfish-web.xml
+        └── index.jsp
+</pre>
+                    </div>
+                </section>
+
+                <section id="http-antwort" data-right-of="http-server" data-title="Inhalt der HTTP-Antwort">
+                    <h2>Inhalt der HTTP-Antwort</h2>
+                    <p>
+                        Die Antwort ist prinzipiell identisch zur Anfrage aufgebaut. Nur die erste Zeile unterscheidet sich.
+                    </p>
+                    <div>
+<pre><code class="language-http">HTTP/1.1 200 Okay
+Date: Thu, 20 Sep 2018 05:33:57 GMT
+Server: Apache/2.4.25 (Debian)
+Last-Modified: Thu, 30 Aug 2018 22:29:58 GMT
+ETag: "48c6b-574ae9d72ec4d-gzip"
+Content-Length: 49219
+Content-Type: text/html
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    ...
+</code></pre>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td>
+                                    <h3>200</h3>
+                                </td>
+                                <td>
+                                    <h3>301</h3>
+                                </td>
+                                <td>
+                                    <h3>404</h3>
+                                </td>
+                                <td>
+                                    <h3>500</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Alles in Ordnung
+                                </td>
+                                <td>
+                                    Weiterleitung
+                                </td>
+                                <td>
+                                    Ressource nicht gefunden
+                                </td>
+                                <td>
+                                    Interner Serverfehler
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- =========================== -->
+                <!-- Webdesign mit HTML, CSS, JS -->
+                <!-- =========================== -->
+                <section id="webdesign-uebersicht" data-right-of="http-antwort" data-title="Was der Server für Daten schickt" style="background-image: url(img/browser.png)">
+                    <div class="p1 white rounded">
+                        <h2>Was der Server für Daten schickt</h2>
+
+                        <h3>HTML (HyperText Markup Language)</h3>
+                        <ul>
+                            <li>
+                                Auszeichnungssprache zur Definition der darzustellenden Inhalte
+                            </li>
+                            <li>
+                                Beschreibt nur den Inhalt und seine Bedeutung, nicht aber das Aussehen
+                            </li>
+                            <li>
+                                Überschriften, Absätze, Aufzählungen, Tabellen, Bilder, …
+                            </li>
+                        </ul>
+
+                        <h3>CSS (Cascading StyleSheets)</h3>
+                        <ul>
+                            <li>
+                                Sprache zur Definition der Layout- und Darstellungsoptionen einer HTML-Seite
+                            </li>
+                            <li>
+                                Bezieht sich auf die Inhalte eines HTML-Dokuments und legt ihre Darstellung fest
+                            </li>
+                            <li>
+                                Farben, Hintergründe, Umrandungen, Positionierung, Transparenz, Schatten, …
+                            </li>
+                        </ul>
+
+                        <h3>JavaScript</h3>
+                        <ul>
+                            <li>
+                                Programmiersprache, die innerhalb des Browsers ausgeführt wird
+                            </li>
+                            <li>
+                                Ermöglicht es, auf Ereignisse wie Mausklicks zu reagieren
+                            </li>
+                            <li>
+                                Kann die dargestellten Inhalte einer Seite zur Laufzeit ändern
+                            </li>
+                            <li>
+                                Bietet ein umfangreiches API zur App-Entwicklung
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="webdesign-responsive" data-above="webdesign-uebersicht" data-title="Responsive Webdesign" style="background-image: url(img/devices.jpg)">
+                    <h2>Mobile First</h2>
+                </section>
+
+                <section id="webdesign-frameworks" data-right-of="webdesign-responsive" data-title="CSS-Frameworks mit Grid-Funktion" style="background-image: url(img/bootstrap.jpg)">
+                    <h2>CSS-Frameworks mit Grid-Funktion</h2>
+                </section>
+
+                <section id="webdesign-css" data-below="webdesign-frameworks" data-title="Weitere CSS-Layoutmodule">
+                    <h2>Weitere CSS-Layoutmodule</h2>
+
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <h3>Flexbox</h3>
+                            </td>
+                            <td style="text-align: right">
+                                <h3>Grid-Module</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="img/flexbox-beispiel.jpg" style="display: inline; width: 100%;"/>
+                            </td>
+                            <td style="text-align: right">
+                                <img src="img/grid-beispiel.jpg"  style="display: inline; width: 80%;"/>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+
+                <!-- ======================= -->
+                <!-- Übergang zum Serverteil -->
+                <!-- ======================= -->
+                <section id="webapp-uebersicht" data-below="http-server" data-title="Die drei Arten von Webanwendungen">
+                    <h2>Die drei Arten von Webanwendungen</h2>
+
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="text-align: center;">
+                                <h3 style="margin: 0">Rein Clientseitig</h3>
+                                <img src="img/webanwendung_01.svg" style="width: 100%;">
+                            </td>
+
+                            <td style="text-align: center;">
+                                <h3 style="margin: 0">Rein Serverseitig</h3>
+                                <img src="img/webanwendung_02.svg" style="width: 100%;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: center;">
+                                <h3 style="margin: 0">Clientseitig mit API-Zugriff</h3>
+                                <img src="img/webanwendung_03.svg" style="width: 50%;">
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+
+                <!-- ========== -->
+                <!-- Serverteil -->
+                <!-- ========== -->
+                <section id="server-ablauf-klassisch" data-below="webapp-uebersicht" data-title="Ablauf bei einer klassischen Webanwendung" style="background-image: url(img/serverseitige-app.jpg)">
+                    <p style="text-align: right">
+                        Bei einer rein serverseitigen Webanwendung <br />
+                        führt jeder Klick dazu, dass eine komplett <br />
+                        neue Seite vom Server geladen wird.
+                    </p>
+                </section>
+
+                <section id="server-struktur-mvc" data-right-of="server-ablauf-klassisch" data-title="Verarbeitung der Anfragen nach MVC" style="background-image: url(img/webapp_struktur.svg)">
+                </section>
+
+                <!-- ======================== -->
+                <!-- Serverseitige Frameworks -->
+                <!-- ======================== -->
+                <section id="server-frameworks-macaron" data-below="server-struktur-mvc" data-title="Ein typisches MVC-Framework" style="background-image: url(img/macron.png);">
+                    <h2>Ein typisches MVC-Framework</h2>
+                </section>
+
+                <section id="server-frameworks-jee" data-right-of="server-frameworks-macaron" data-title="Serverseitige Webanwendungen mit Java">
+                    <h2>Serverseitige Webanwendungen mit Java</h2>
+                    <table class="nopad" style="width: 100%;">
+                        <tr>
+                            <td>
+                                <h3>Servlets</h3>
+                            </td>
+                            <td>
+                                <h3>Java Server Pages</h3>
+                            </td>
+                            <td>
+                                <h3>EJB und JPA</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Request Handler
+                            </td>
+                            <td>
+                                HTML Templates
+                            </td>
+                            <td>
+                                Fachlogik und Datenbank
+                            </td>
+                        </tr>
+                    </table>
+                    <div></div>
+                    <img src="img/java-mvc.png" style="display: block; width: 100%" />
+                </section>
+
+                <!-- ========================= -->
+                <!-- Übung zu Servlets und JSP -->
+                <!-- ========================= -->
+                <section id="uebung-servlets-jsp" data-below="server-frameworks-jee" data-title="Aufgabe in Moodle: Meine Lieblingsfilme" style="background-image: url(img/aufgabe-servlet.png)">
+                    <h2>Aufgabe in Moodle</h2>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
